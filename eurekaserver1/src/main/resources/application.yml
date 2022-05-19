@@ -1,0 +1,72 @@
+server:
+  port: 8081
+
+  # 应用的名字
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: admin
+      password: admin
+  #数据库连接配置
+#  datasource:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/fordream?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+#    username: root
+#    password: admin
+#  redis:
+##    host: 35.220.129.218
+#    host: 35.220.190.179
+#    port: 6379
+#    timeout: 20000
+#    password: Abcd1234
+    #pool:
+    #max-active: 8
+    #min-idle: 0
+    #max-idle: 8
+    #max-wait: -1
+    #password:
+
+#mybatis的相关配置
+#mybatis:
+#  #mapper配置文件
+#  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.icbcasia.eslog.model
+#  #开启驼峰命名
+#  configuration:
+#    map-underscore-to-camel-case: true
+
+
+eureka:
+  instance:
+    hostname: eurekaserver1
+    prefer-ip-address: false
+  client:
+    # 禁止把自己注册到 eureka 的服务端, 集群模式下可以改成true
+    register-with-eureka: true
+    # 不从 eureka 服务端拉取节点信息,集群模式下可以改成true
+    fetch-registry: true
+    # 我们知道 eureka 也会把自己当做服务进行注册，但是注册的地址? 下面配置的就是注册的地址，默认为 http://localhost:8761/eureka/
+    service-url:
+      # 集群模式下，defaultZone应该指向其它Eureka Server，如果有更多其它Server实例，逗号拼接即可
+#      defaultZone: http://eurekaserver:8080/eureka/
+      defaultZone: http://dmin:admin@eurekaserver:8080/eureka/
+#        http://${eureka.instance.hostname}:${server.port}/eureka/
+#开启 http basic 的安全认证
+#security:
+#  basic:
+#    enabled: true
+#  user:
+#    name: user
+#    password: 123456
+#elasticSearch的相关配置
+#elasticSearch:
+#  host: 34.92.4.100
+#  port: 9200
+#  user: elasticsearch
+#  password: Abcd1234
+#  cluster-name: els001
+#  client:
+#    connectNum: 10
+#    connectPerRoute: 50
